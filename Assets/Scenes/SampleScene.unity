@@ -293,6 +293,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 189323397}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &438955815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 438955817}
+  - component: {fileID: 438955816}
+  m_Layer: 0
+  m_Name: DievrSpawer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &438955816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438955815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9611b245fb84a9b4d978c1ff25e7c07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DiverSpawner
+  collectibleItemPrefab: {fileID: 8004475097939924517, guid: 47c0a03996fc14e4c97ef62923ee3841, type: 3}
+  maxSpawnCount: 10
+  spawnRate: 5
+  waterLevel: 2.5
+  minX: -8.67
+  maxX: 9.39
+  minY: -5.2
+  maxY: 1.17
+  minZ: 0
+  maxZ: 0
+--- !u!4 &438955817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438955815}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.7, y: 2.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,6 +597,7 @@ GameObject:
   - component: {fileID: 627133412}
   - component: {fileID: 627133414}
   - component: {fileID: 627133415}
+  - component: {fileID: 627133416}
   m_Layer: 0
   m_Name: Submarine
   m_TagString: Player
@@ -618,7 +673,7 @@ Transform:
   m_GameObject: {fileID: 627133409}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -732,6 +787,21 @@ MonoBehaviour:
   oxygenRefillRate: 20
   waterLevel: 0
   explosionPrefab: {fileID: 0}
+--- !u!114 &627133416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627133409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc91837ad3bb6d94d9f317fd57f67b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DiverCollector
+  maxCollectCount: 3
+  waterLevel: 0
+  collectCountText: {fileID: 1247497851}
 --- !u!1 &932359838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,6 +1158,7 @@ RectTransform:
   - {fileID: 1067463829}
   - {fileID: 932359839}
   - {fileID: 1839554155}
+  - {fileID: 1247497850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1095,6 +1166,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1247497849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1247497850}
+  - component: {fileID: 1247497852}
+  - component: {fileID: 1247497851}
+  m_Layer: 5
+  m_Name: DiverText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1247497850
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247497849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1113941201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -769, y: 370}
+  m_SizeDelta: {x: 381.0737, y: 120.3468}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1247497851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247497849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 60
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Carrying divers:'
+--- !u!222 &1247497852
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247497849}
+  m_CullTransparentMesh: 1
 --- !u!1 &1413427021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,14 +1431,14 @@ MonoBehaviour:
   sharkEnemyPrefab: {fileID: 7955679090187241642, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
   spawnOnLeftSide: 0
   spawnDistanceX: 9.2
-  minSpawnY: -4.3
-  maxSpawnY: 4.74
+  minSpawnY: -5.74
+  maxSpawnY: 1.43
   spawnYInterval: 1.5
   moveSpeed: 2
   damageOnHit: 1
   screenLeftX: -8.8
   screenRightX: 8.8
-  spawnRate: 3
+  spawnRate: 9
   initialSpawnDelay: 2
 --- !u!4 &1504369987
 Transform:
@@ -1298,13 +1448,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504369985}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 10.45, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &1839554154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,8 +1489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1496, y: 0}
-  m_SizeDelta: {x: 418.4224, y: 109.324}
+  m_AnchoredPosition: {x: -1582.6115, y: 0}
+  m_SizeDelta: {x: 331.8109, y: 109.324}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1839554156
 MonoBehaviour:
@@ -1375,7 +1525,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:'
+  m_Text: Lives
 --- !u!222 &1839554157
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1657,7 +1807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2008611262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1766,14 +1916,14 @@ MonoBehaviour:
   sharkEnemyPrefab: {fileID: 7955679090187241642, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
   spawnOnLeftSide: 1
   spawnDistanceX: 9.2
-  minSpawnY: -4.3
-  maxSpawnY: 4.74
+  minSpawnY: -5.2
+  maxSpawnY: 2.48
   spawnYInterval: 1.5
   moveSpeed: 2
   damageOnHit: 1
   screenLeftX: -8.8
   screenRightX: 8.8
-  spawnRate: 3
+  spawnRate: 7
   initialSpawnDelay: 2
 --- !u!4 &2113835429
 Transform:
@@ -1790,67 +1940,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2956195088662614081
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6384049799520264061, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 6384049799520264061, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.2671
-      objectReference: {fileID: 0}
-    - target: {fileID: 6384049799520264061, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6384049799520264061, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6384049799520264061, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6384049799520264061, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6384049799520264061, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6384049799520264061, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6384049799520264061, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6384049799520264061, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7955679090187241642, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_Name
-      value: Square
-      objectReference: {fileID: 0}
-    - target: {fileID: 7955679090187241642, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1863,6 +1952,6 @@ SceneRoots:
   - {fileID: 1113941201}
   - {fileID: 1413427024}
   - {fileID: 189323397}
-  - {fileID: 2956195088662614081}
   - {fileID: 2113835429}
   - {fileID: 1504369987}
+  - {fileID: 438955817}

@@ -3,10 +3,9 @@ using UnityEngine;
 public class SharkEnemySpawner : MonoBehaviour
 {
     [Header("鲨鱼预制体")]
-    public GameObject sharkEnemyPrefab; 
+    public GameObject sharkEnemyPrefab;
 
-   
-   
+    [Header("生成侧配置（手动指定）")]
     public bool spawnOnLeftSide = true; // 手动选择生成侧
     public float spawnDistanceX = 15f; // 生成点与玩家的X轴距离
 
@@ -28,11 +27,10 @@ public class SharkEnemySpawner : MonoBehaviour
     public float initialSpawnDelay = 2f; // 开局延迟生成时间
 
     private Transform player;
-    private float lastSpawnY; 
+    private float lastSpawnY;
 
     void Start()
     {
-
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         if (player == null)
         {
@@ -49,20 +47,30 @@ public class SharkEnemySpawner : MonoBehaviour
         if (GameManager.Instance == null || GameManager.Instance.gameOver) return;
         if (player == null || sharkEnemyPrefab == null) return;
 
-       
+        // 计算生成位置
         float spawnX = spawnOnLeftSide ? (player.position.x - spawnDistanceX) : (player.position.x + spawnDistanceX);
-        float spawnY = GetValidSpawnY(); 
-
+        float spawnY = GetValidSpawnY();
         Vector2 spawnPosition = new Vector2(spawnX, spawnY);
 
-
+        // 生成鲨鱼敌人
         GameObject shark = Instantiate(sharkEnemyPrefab, spawnPosition, Quaternion.identity);
 
+        // 获取鲨鱼的SpriteRenderer组件（核心：翻转X轴）
+        SpriteRenderer sharkRenderer = shark.GetComponent<SpriteRenderer>();
+        if (sharkRenderer != null)
+        {
+            // 左侧生成：朝向右侧（flipX=false）；右侧生成：朝向左侧（flipX=true）
+            sharkRenderer.flipX = !spawnOnLeftSide;
+        }
+        else
+        {
+            Debug.LogWarning("鲨鱼预制体缺少SpriteRenderer组件！无法翻转朝向");
+        }
 
+        // 赋值鲨鱼移动参数
         SharkEnemy sharkEnemy = shark.GetComponent<SharkEnemy>();
         if (sharkEnemy != null)
         {
-            
             sharkEnemy.moveDirection = spawnOnLeftSide ? 1 : -1;
             sharkEnemy.moveSpeed = moveSpeed;
             sharkEnemy.screenLeftX = screenLeftX;
@@ -78,21 +86,17 @@ public class SharkEnemySpawner : MonoBehaviour
 
     private float GetValidSpawnY()
     {
-   
         float nextSpawnY = lastSpawnY + spawnYInterval;
-
         if (nextSpawnY > maxSpawnY)
         {
             nextSpawnY = minSpawnY;
         }
-
- 
         lastSpawnY = nextSpawnY;
-
 
         float randomOffset = Random.Range(-0.5f, 0.5f);
         return Mathf.Clamp(nextSpawnY + randomOffset, minSpawnY, maxSpawnY);
     }
+
     void OnDrawGizmosSelected()
     {
         // 绘制Y轴生成范围
