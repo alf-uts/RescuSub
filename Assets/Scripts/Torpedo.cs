@@ -19,14 +19,21 @@ public class Torpedo : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
-
+       
         if (enemy != null)
         {
             enemy.DestroyEnemy();
             Destroy(gameObject);
+            return;
         }
-
-        if (other.CompareTag("Obstacle"))
+        SharkEnemy enemy1 = other.GetComponent<SharkEnemy>();
+        if (enemy1 != null)
+        {
+            enemy1.DestroyEnemy();
+            Destroy(gameObject);
+            return;
+        }
+        if (other.CompareTag("Enemy"))
         {
             Destroy(gameObject);
         }
