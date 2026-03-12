@@ -6,6 +6,7 @@ public class OxygenLevel : MonoBehaviour
 public Slider oxygenBar;
 public float maxOxygen = 100f;
 private float currentOxygen;
+private bool hasExploded=false;
 
 public float oxygenDrainRate=10f;
 public float oxygenRefillRate = 20f;
@@ -22,6 +23,7 @@ void Start()
 
 void Update()
 {
+    if(hasExploded) return;
     if(transform.position.y<waterLevel)
     {
         DrainOxygen();
@@ -31,7 +33,7 @@ void Update()
         RefillOxygen();
     }
     oxygenBar.value=currentOxygen;
-    if(currentOxygen<=0)
+    if(currentOxygen<=0 && !hasExploded)
     {
         Explode();
     }
@@ -51,6 +53,7 @@ void RefillOxygen()
 
 void Explode()
 {
+    hasExploded=true;
     Instantiate(explosionPrefab, transform.position, Quaternion.identity);
     Destroy(gameObject);
 }
