@@ -13,11 +13,7 @@ GameObject:
   - component: {fileID: 8042562899008303649}
   - component: {fileID: 268090674925856981}
   m_Layer: 0
-<<<<<<<< HEAD:Assets/Prefabs/SharkEnemy.prefab
   m_Name: SharkEnemy
-========
-  m_Name: Shark
->>>>>>>> 86a4a0e1c48b814c8962bdf4af8f1e51496d4c72:Assets/Prefabs/Shark.prefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,13 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.3105, y: -0.2671, z: 0}
-<<<<<<<< HEAD:Assets/Prefabs/SharkEnemy.prefab
   m_LocalScale: {x: 1.2183031, y: 0.62113285, z: 1}
   m_ConstrainProportionsScale: 0
-========
-  m_LocalScale: {x: 2, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 1
->>>>>>>> 86a4a0e1c48b814c8962bdf4af8f1e51496d4c72:Assets/Prefabs/Shark.prefab
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -92,13 +83,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-<<<<<<<< HEAD:Assets/Prefabs/SharkEnemy.prefab
   m_Sprite: {fileID: -2168464065330336442, guid: 4fba0575711cad946bf4d25990fb2e8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-========
-  m_Sprite: {fileID: 5746764926269108267, guid: d34bee9139dd24c1a904aef3b70a1397, type: 3}
-  m_Color: {r: 0, g: 0.87722445, b: 1, a: 1}
->>>>>>>> 86a4a0e1c48b814c8962bdf4af8f1e51496d4c72:Assets/Prefabs/Shark.prefab
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -162,11 +148,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-<<<<<<<< HEAD:Assets/Prefabs/SharkEnemy.prefab
     oldSize: {x: 1.89, y: 1.12}
-========
-    oldSize: {x: 1, y: 0.5625}
->>>>>>>> 86a4a0e1c48b814c8962bdf4af8f1e51496d4c72:Assets/Prefabs/Shark.prefab
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
