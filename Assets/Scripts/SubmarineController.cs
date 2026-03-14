@@ -23,7 +23,7 @@ public class SubmarineController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        RotateSubmarine();
+        FlipSprite();
 
         if (Input.GetKey(KeyCode.Space) && Time.time >= nextFireTime)
         {
@@ -37,13 +37,12 @@ public class SubmarineController : MonoBehaviour
         rb.linearVelocity = movement.normalized * moveSpeed;
     }
 
-    void RotateSubmarine()
+    void FlipSprite()
     {
-        if (movement != Vector2.zero)
-        {
-            float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
-        }
+        if (movement.x < 0)
+            transform.localScale = new Vector3(-3, 3, 3);
+        else if (movement.x > 0)
+            transform.localScale = new Vector3(3, 3, 3);
     }
 
     void Shoot()
