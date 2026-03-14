@@ -279,13 +279,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76aa83b479194b12b267b1834a14e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  score: 0
+  score: 990
   playerLives: 4
+  maxLives: 5
   gameOver: 0
   scoreText: {fileID: 932359840}
   livesText: {fileID: 1839554156}
   submarinePrefab: {fileID: 7089607315924093068, guid: 9eddf6b3816b0d74fac5e9f4d67c8c93, type: 3}
   spawnPoint: {fileID: 1964024841}
+  extraLifeScoreThreshold: 10000
 --- !u!4 &423708516
 Transform:
   m_ObjectHideFlags: 0
@@ -423,11 +425,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DiverSpawner
   collectibleItemPrefab: {fileID: 8004475097939924517, guid: 47c0a03996fc14e4c97ef62923ee3841, type: 3}
   maxSpawnCount: 10
-  spawnRate: 5
+  spawnRate: 2
   waterLevel: 2.5
-  minX: -8.67
-  maxX: 9.39
-  minY: -5.2
+  minX: -8.88
+  maxX: 8.78
+  minY: -5.01
   maxY: 1.17
   minZ: 0
   maxZ: 0
@@ -816,7 +818,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -965.17004}
-  m_SizeDelta: {x: 418.4224, y: 109.324}
+  m_SizeDelta: {x: 506.7, y: 109.324}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &932359840
 MonoBehaviour:
@@ -1055,6 +1057,58 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1175708816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1175708818}
+  - component: {fileID: 1175708817}
+  m_Layer: 0
+  m_Name: InvincibleItemSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1175708817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175708816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b5c75dd7b418724faaa415c5d9c7164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InvincibleItemSpawner
+  invincibleItemPrefab: {fileID: 7920465118730663400, guid: 92c1c2f1bc6ca824c88ced9cf768cabd, type: 3}
+  minX: -10
+  maxX: 10
+  minY: -4.5
+  maxY: 1.72
+  spawnRate: 8
+  initialDelay: 5
+  maxItems: 2
+--- !u!4 &1175708818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175708816}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.10325, y: -0.16785, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1247497849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,8 +1143,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 56.4553, y: -482.59}
-  m_SizeDelta: {x: 939.9146, y: 114.83}
+  m_AnchoredPosition: {x: 1.2662, y: -482.59}
+  m_SizeDelta: {x: 904.0775, y: 114.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1247497851
 MonoBehaviour:
@@ -1297,6 +1351,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361949885}
   m_CullTransparentMesh: 1
+--- !u!1 &1402859755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402859757}
+  - component: {fileID: 1402859756}
+  m_Layer: 0
+  m_Name: LifeRestoreItemSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1402859756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402859755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216ed66bf5bee8d44b554065e4dc8a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LifeRestoreItemSpawner
+  lifeRestoreItemPrefab: {fileID: 1652262113011248324, guid: 87e2c72cc908d4946a2de02aa550c073, type: 3}
+  minX: -8.76
+  maxX: 9.09
+  minY: -4.7
+  maxY: 1.52
+  spawnRate: 10
+  initialDelay: 8
+  maxItems: 5
+--- !u!4 &1402859757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402859755}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.75, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1413427021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,7 +1677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b0ffcd1280d7245ac236d9fcbfcce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SharkEnemySpawner
-  sharkEnemyPrefab: {fileID: 7955679090187241642, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
+  sharkEnemyPrefab: {fileID: 7955679090187241642, guid: a95ab973d0afd4f4d83eeaa6ff4ad154, type: 3}
   spawnOnLeftSide: 0
   spawnDistanceX: 9.2
   minSpawnY: -5.74
@@ -1581,8 +1687,13 @@ MonoBehaviour:
   damageOnHit: 1
   screenLeftX: -8.8
   screenRightX: 8.8
-  spawnRate: 9
   initialSpawnDelay: 2
+  minSpawnInterval: 2
+  maxSpawnInterval: 5
+  difficultySpawnRate: 30
+  maxSpeedMultiplier: 1.5
+  baseHealth: 1
+  maxHealthBonus: 2
 --- !u!4 &1504369987
 Transform:
   m_ObjectHideFlags: 0
@@ -1689,6 +1800,60 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1727101036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727101038}
+  - component: {fileID: 1727101037}
+  m_Layer: 0
+  m_Name: OxygenSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1727101037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727101036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bec537670ee5346933fafae6cbf4c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OxygenSpawner
+  oxygenPrefab: {fileID: 3272432423164928492, guid: 7e985c15bf1099440bb02004d4b73f3f, type: 3}
+  maxSpawnCount: 5
+  spawnRate: 5
+  waterLevel: 2.08
+  minX: -9.1
+  maxX: 8.82
+  minY: -5.25
+  maxY: 1.51
+  minZ: 0
+  maxZ: 0
+--- !u!4 &1727101038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727101036}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.64215, y: 3.53448, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1839554154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,8 +2261,10 @@ MonoBehaviour:
   - {fileID: 7750085634306432230, guid: 24a6a3ed84b3048409c44ee4f9db0d98, type: 3}
   - {fileID: 7750085634306432230, guid: 24a6a3ed84b3048409c44ee4f9db0d98, type: 3}
   - {fileID: 7750085634306432230, guid: 24a6a3ed84b3048409c44ee4f9db0d98, type: 3}
-  spawnRate: 3
   spawnDistance: 5
+  minSpawnInterval: 2
+  maxSpawnInterval: 5
+  difficultySpawnRate: 30
 --- !u!4 &2008611263
 Transform:
   m_ObjectHideFlags: 0
@@ -2269,7 +2436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b0ffcd1280d7245ac236d9fcbfcce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SharkEnemySpawner
-  sharkEnemyPrefab: {fileID: 7955679090187241642, guid: edea808877e9f6f4ab61cc20e910320a, type: 3}
+  sharkEnemyPrefab: {fileID: 7955679090187241642, guid: a95ab973d0afd4f4d83eeaa6ff4ad154, type: 3}
   spawnOnLeftSide: 1
   spawnDistanceX: 9.2
   minSpawnY: -5.2
@@ -2279,8 +2446,13 @@ MonoBehaviour:
   damageOnHit: 1
   screenLeftX: -8.8
   screenRightX: 8.8
-  spawnRate: 7
   initialSpawnDelay: 2
+  minSpawnInterval: 2
+  maxSpawnInterval: 5
+  difficultySpawnRate: 30
+  maxSpeedMultiplier: 1.5
+  baseHealth: 1
+  maxHealthBonus: 2
 --- !u!4 &2113835429
 Transform:
   m_ObjectHideFlags: 0
@@ -2316,21 +2488,13 @@ PrefabInstance:
       propertyPath: collectCountText
       value: 
       objectReference: {fileID: 1247497851}
-    - target: {fileID: 5311115893268240625, guid: 9eddf6b3816b0d74fac5e9f4d67c8c93, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
+    - target: {fileID: 4775211032551717201, guid: 9eddf6b3816b0d74fac5e9f4d67c8c93, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.47
       objectReference: {fileID: 0}
-    - target: {fileID: 5998319445928396678, guid: 9eddf6b3816b0d74fac5e9f4d67c8c93, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5998319445928396678, guid: 9eddf6b3816b0d74fac5e9f4d67c8c93, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5998319445928396678, guid: 9eddf6b3816b0d74fac5e9f4d67c8c93, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3
+    - target: {fileID: 4775211032551717201, guid: 9eddf6b3816b0d74fac5e9f4d67c8c93, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.054
       objectReference: {fileID: 0}
     - target: {fileID: 5998319445928396678, guid: 9eddf6b3816b0d74fac5e9f4d67c8c93, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2372,10 +2536,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5998319445928396678, guid: 9eddf6b3816b0d74fac5e9f4d67c8c93, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7089607315924093068, guid: 9eddf6b3816b0d74fac5e9f4d67c8c93, type: 3}
       propertyPath: m_Name
       value: Submarine
@@ -2401,3 +2561,6 @@ SceneRoots:
   - {fileID: 1504369987}
   - {fileID: 438955817}
   - {fileID: 1964024841}
+  - {fileID: 1175708818}
+  - {fileID: 1727101038}
+  - {fileID: 1402859757}

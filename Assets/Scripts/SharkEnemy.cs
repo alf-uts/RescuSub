@@ -2,12 +2,26 @@ using UnityEngine;
 
 public class SharkEnemy : MonoBehaviour
 {
-  
-    [HideInInspector] public int moveDirection; // 移动方向：1=右，-1=左
-    [HideInInspector] public float moveSpeed; // 移动速度
-    [HideInInspector] public float screenLeftX; // 屏幕左边界
-    [HideInInspector] public float screenRightX; // 屏幕右边界
-    [HideInInspector] public int damageOnHit = 1; // 碰到玩家扣血数
+    [HideInInspector] public int moveDirection;
+    [HideInInspector] public float moveSpeed;
+    [HideInInspector] public float screenLeftX;
+    [HideInInspector] public float screenRightX;
+    [HideInInspector] public int damageOnHit = 1;
+
+    [HideInInspector] public int maxHealth = 1;
+    [HideInInspector] public int currentHealth;
+
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
+    }
 
     private void Update()
     {
@@ -18,22 +32,48 @@ public class SharkEnemy : MonoBehaviour
         CheckOutOfScreen();
     }
 
-
     private void CheckOutOfScreen()
     {
-        if (moveDirection == 1 && transform.position.x > screenRightX) 
+        if (moveDirection == 1 && transform.position.x > screenRightX)
         {
             Destroy(gameObject);
         }
-        else if (moveDirection == -1 && transform.position.x < screenLeftX) 
+        else if (moveDirection == -1 && transform.position.x < screenLeftX)
         {
             Destroy(gameObject);
         }
     }
 
-  
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (spriteRenderer != null)
+        {
+            StartCoroutine(FlashDamage());
+        }
+
+        if (currentHealth <= 0)
+        {
+            DestroyEnemy();
+        }
+    }
+
+    private System.Collections.IEnumerator FlashDamage()
+    {
+        spriteRenderer.color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = originalColor;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
+        PlayerInvincible inv = other.GetComponent<PlayerInvincible>();
+        if (inv != null && inv.IsInvincible())
+        {
+            return;
+        }
+
         if (other.CompareTag("Player") && GameManager.Instance != null && !GameManager.Instance.gameOver)
         {
             for (int i = 0; i < damageOnHit; i++)
@@ -43,6 +83,7 @@ public class SharkEnemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void DestroyEnemy()
     {
         GameManager.Instance.AddScore(10);
@@ -58,7 +99,7 @@ public class SharkEnemy : MonoBehaviour
         }
         else
         {
-            Debug.LogError("鲨鱼敌人缺少Collider2D组件！已自动添加BoxCollider2D", this);
+            Debug.LogError("鏁屼汉缂哄皯Collider2D缁勪欢锛屽皢鑷姩娣诲姞BoxCollider2D", this);
             gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
         }
     }

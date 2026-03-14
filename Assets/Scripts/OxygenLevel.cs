@@ -73,7 +73,12 @@ void RefillOxygen()
     currentOxygen += oxygenRefillRate*Time.deltaTime;
     currentOxygen = Mathf.Clamp(currentOxygen,0,maxOxygen);
 }
-
+public void AddOxygen(float amount)
+{
+    currentOxygen += amount;
+    currentOxygen = Mathf.Clamp(currentOxygen, 0, maxOxygen);
+    Debug.Log($"增加氧气: {amount}, 当前氧气: {currentOxygen}");
+}
 void Explode()
 {
     if(hasExploded) return;
